@@ -41,7 +41,7 @@ namespace PayrollSys
                     }
                 }
 
-                empcode.SelectedIndex = 0; // Default selection
+                empcode.SelectedIndex = 0; //wag mo to galawin, eto lang dahilan para mag cycle lahat nun empID
             }
             catch (Exception ex)
             {

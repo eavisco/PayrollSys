@@ -59,11 +59,11 @@
             this.button2 = new System.Windows.Forms.Button();
             this.label19 = new System.Windows.Forms.Label();
             this.textBox10 = new System.Windows.Forms.TextBox();
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
-            this.maskedTextBox2 = new System.Windows.Forms.MaskedTextBox();
-            this.maskedTextBox3 = new System.Windows.Forms.MaskedTextBox();
             this.textBox11 = new System.Windows.Forms.TextBox();
             this.domainUpDown1 = new System.Windows.Forms.DomainUpDown();
+            this.textBox12 = new System.Windows.Forms.TextBox();
+            this.textBox13 = new System.Windows.Forms.TextBox();
+            this.textBox14 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -299,6 +299,7 @@
             this.button1.TabIndex = 27;
             this.button1.Text = "SAVE";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
@@ -325,27 +326,6 @@
             this.textBox10.Size = new System.Drawing.Size(100, 20);
             this.textBox10.TabIndex = 30;
             // 
-            // maskedTextBox1
-            // 
-            this.maskedTextBox1.Location = new System.Drawing.Point(607, 186);
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(100, 20);
-            this.maskedTextBox1.TabIndex = 31;
-            // 
-            // maskedTextBox2
-            // 
-            this.maskedTextBox2.Location = new System.Drawing.Point(607, 211);
-            this.maskedTextBox2.Name = "maskedTextBox2";
-            this.maskedTextBox2.Size = new System.Drawing.Size(100, 20);
-            this.maskedTextBox2.TabIndex = 32;
-            // 
-            // maskedTextBox3
-            // 
-            this.maskedTextBox3.Location = new System.Drawing.Point(607, 237);
-            this.maskedTextBox3.Name = "maskedTextBox3";
-            this.maskedTextBox3.Size = new System.Drawing.Size(100, 20);
-            this.maskedTextBox3.TabIndex = 33;
-            // 
             // textBox11
             // 
             this.textBox11.Location = new System.Drawing.Point(102, 92);
@@ -360,16 +340,37 @@
             this.domainUpDown1.Size = new System.Drawing.Size(120, 20);
             this.domainUpDown1.TabIndex = 35;
             // 
+            // textBox12
+            // 
+            this.textBox12.Location = new System.Drawing.Point(607, 185);
+            this.textBox12.Name = "textBox12";
+            this.textBox12.Size = new System.Drawing.Size(100, 20);
+            this.textBox12.TabIndex = 36;
+            // 
+            // textBox13
+            // 
+            this.textBox13.Location = new System.Drawing.Point(607, 214);
+            this.textBox13.Name = "textBox13";
+            this.textBox13.Size = new System.Drawing.Size(100, 20);
+            this.textBox13.TabIndex = 37;
+            // 
+            // textBox14
+            // 
+            this.textBox14.Location = new System.Drawing.Point(607, 240);
+            this.textBox14.Name = "textBox14";
+            this.textBox14.Size = new System.Drawing.Size(100, 20);
+            this.textBox14.TabIndex = 38;
+            // 
             // payroll
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(719, 450);
+            this.Controls.Add(this.textBox14);
+            this.Controls.Add(this.textBox13);
+            this.Controls.Add(this.textBox12);
             this.Controls.Add(this.domainUpDown1);
             this.Controls.Add(this.textBox11);
-            this.Controls.Add(this.maskedTextBox3);
-            this.Controls.Add(this.maskedTextBox2);
-            this.Controls.Add(this.maskedTextBox1);
             this.Controls.Add(this.textBox10);
             this.Controls.Add(this.label19);
             this.Controls.Add(this.button2);
@@ -441,10 +442,10 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.TextBox textBox10;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox2;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox3;
         private System.Windows.Forms.TextBox textBox11;
         private System.Windows.Forms.DomainUpDown domainUpDown1;
+        private System.Windows.Forms.TextBox textBox12;
+        private System.Windows.Forms.TextBox textBox13;
+        private System.Windows.Forms.TextBox textBox14;
     }
 }
