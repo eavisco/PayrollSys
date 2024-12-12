@@ -21,10 +21,7 @@ namespace PayrollSys
         {
             InitializeComponent();
             InitializeEmployeeIds();
-
-
         }
-
         private void InitializeEmployeeIds()
         {
             try
@@ -44,7 +41,7 @@ namespace PayrollSys
                     }
                 }
 
-                domainUpDown1.SelectedIndex = 0; //wag mo to galawin, eto lang dahilan para mag cycle lahat nun empID
+                domainUpDown1.SelectedIndex = 0; // Default selection
                 UpdateEmployeeName();
             }
             catch (Exception ex)
@@ -62,7 +59,9 @@ namespace PayrollSys
         {
             try
             {
-                string employeeId = domainUpDown1.Text;
+                string employeeId = domainUpDown1.SelectedItem?.ToString() ?? ""; // Ensure correct assignment
+                if (string.IsNullOrEmpty(employeeId)) return;
+
                 using (var connection = new MySqlConnection(connectionString))
                 {
                     connection.Open();
@@ -78,11 +77,11 @@ namespace PayrollSys
                                 string lastName = reader["empLastName"].ToString();
                                 string firstName = reader["empFirstName"].ToString();
                                 string middleName = reader["empMiddleName"].ToString();
-                                textBox11.Text = $"{lastName}, {firstName} {middleName}";
+                                label20.Text = $"{lastName}, {firstName} {middleName}"; // Use label instead of TextBox
                             }
                             else
                             {
-                                textBox11.Text = "";
+                                label20.Text = "";
                             }
                         }
                     }
@@ -93,14 +92,15 @@ namespace PayrollSys
                 MessageBox.Show($"Error updating employee name: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+    
 
-        private void button1_Click(object sender, EventArgs e)
+private void button1_Click(object sender, EventArgs e)
         {
             try
             {
                 string employeeId = domainUpDown1.Text;
-                string query = @"INSERT INTO emppay (pay, workDay, payRate, rateWage, overtimeHour, overtimeRegular, holidayDaily, holidayPay, grossInc, netInc, deducPagibig, deducPhilhealth, deducSSS) 
-                                 VALUES (@pay, @workDay, @payRate, @rateWage, @overtimeHour, @overtimeRegular, @holidayDaily, @holidayPay, @grossInc, @netInc, @deducPagibig, @deducPhilhealth, @deducSSS)";
+                string query = @"INSERT INTO emppay (pay, workDay, payRate, rateWage, overtimeHour, overtimeRegular, holidayDaily, holidayPay, grossInc, netInc, deducPagibig, deducPhillhealth, deducSSS) 
+                                 VALUES (@pay, @workDay, @payRate, @rateWage, @overtimeHour, @overtimeRegular, @holidayDaily, @holidayPay, @grossInc, @netInc, @deducPagibig, @deducPhillhealth, @deducSSS)";
 
                 using (var connection = new MySqlConnection(connectionString))
                 {
@@ -118,7 +118,7 @@ namespace PayrollSys
                         cmd.Parameters.AddWithValue("@grossInc", textBox9.Text);
                         cmd.Parameters.AddWithValue("@netInc", textBox10.Text);
                         cmd.Parameters.AddWithValue("@deducPagibig", textBox12.Text);
-                        cmd.Parameters.AddWithValue("@deducPhilhealth", textBox13.Text);
+                        cmd.Parameters.AddWithValue("@deducPhillhealth", textBox13.Text);
                         cmd.Parameters.AddWithValue("@deducSSS", textBox14.Text);
 
                         cmd.ExecuteNonQuery();
@@ -132,6 +132,24 @@ namespace PayrollSys
             {
                 MessageBox.Show($"Error saving payment data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            domainUpDown1.SelectedIndex = 0;
+            label20.Text = "";
+            textBox3.Clear();
+            textBox2.Clear();
+            textBox4.Clear();
+            textBox5.Clear();
+            textBox7.Clear();
+            textBox6.Clear();
+            textBox8.Clear();
+            textBox9.Clear();
+            textBox10.Clear();
+            textBox12.Clear();
+            textBox13.Clear();
+            textBox14.Clear();
         }
     }
 }

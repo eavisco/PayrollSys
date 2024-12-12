@@ -59,11 +59,11 @@
             this.button2 = new System.Windows.Forms.Button();
             this.label19 = new System.Windows.Forms.Label();
             this.textBox10 = new System.Windows.Forms.TextBox();
-            this.textBox11 = new System.Windows.Forms.TextBox();
             this.domainUpDown1 = new System.Windows.Forms.DomainUpDown();
             this.textBox12 = new System.Windows.Forms.TextBox();
             this.textBox13 = new System.Windows.Forms.TextBox();
             this.textBox14 = new System.Windows.Forms.TextBox();
+            this.label20 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -309,6 +309,7 @@
             this.button2.TabIndex = 28;
             this.button2.Text = "NEW";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // label19
             // 
@@ -325,13 +326,6 @@
             this.textBox10.Name = "textBox10";
             this.textBox10.Size = new System.Drawing.Size(100, 20);
             this.textBox10.TabIndex = 30;
-            // 
-            // textBox11
-            // 
-            this.textBox11.Location = new System.Drawing.Point(102, 92);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(341, 20);
-            this.textBox11.TabIndex = 34;
             // 
             // domainUpDown1
             // 
@@ -361,16 +355,25 @@
             this.textBox14.Size = new System.Drawing.Size(100, 20);
             this.textBox14.TabIndex = 38;
             // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(102, 92);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(41, 13);
+            this.label20.TabIndex = 39;
+            this.label20.Text = "label20";
+            // 
             // payroll
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(719, 450);
+            this.Controls.Add(this.label20);
             this.Controls.Add(this.textBox14);
             this.Controls.Add(this.textBox13);
             this.Controls.Add(this.textBox12);
             this.Controls.Add(this.domainUpDown1);
-            this.Controls.Add(this.textBox11);
             this.Controls.Add(this.textBox10);
             this.Controls.Add(this.label19);
             this.Controls.Add(this.button2);
@@ -442,10 +445,10 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.TextBox textBox10;
-        private System.Windows.Forms.TextBox textBox11;
         private System.Windows.Forms.DomainUpDown domainUpDown1;
         private System.Windows.Forms.TextBox textBox12;
         private System.Windows.Forms.TextBox textBox13;
         private System.Windows.Forms.TextBox textBox14;
+        private System.Windows.Forms.Label label20;
     }
 }

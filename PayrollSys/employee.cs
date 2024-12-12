@@ -40,7 +40,9 @@ namespace PayrollSys
                 string.IsNullOrEmpty(txtaddress.Text) || string.IsNullOrEmpty(txtcontact.Text) ||
                 string.IsNullOrEmpty(txtstatus.Text) || string.IsNullOrEmpty(txtbplace.Text) ||
                 string.IsNullOrEmpty(txtage.Text) || string.IsNullOrEmpty(txtemerg.Text) ||
-                string.IsNullOrEmpty(txtdrate.Text) || string.IsNullOrEmpty(txtposition.Text))
+                string.IsNullOrEmpty(txtdrate.Text) || string.IsNullOrEmpty(txtposition.Text) || 
+                string.IsNullOrEmpty(txtpay.Text) || string.IsNullOrEmpty(employstat.Text))
+                
             {
                 MessageBox.Show("One of the boxes is empty. Data is required.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
@@ -53,10 +55,10 @@ namespace PayrollSys
             string query = @"
     INSERT INTO empdata (
         empID, empFirstName, empLastName, empMiddleName, empCon, empStat, empPlaceb, 
-        empGen, empBirth, empAge, empEmerg, empDailyRate, empPos, empHire
+        empGen, empBirth, empAge, empEmerg, empDailyRate, empPos, empHire, pay, workstat
     ) VALUES (
         @empID, @empFirstName, @empLastName, @empMiddleName, @empCon, @empStat, @empPlaceb, 
-        @empGen, @empBirth, @empAge, @empEmerg, @empDailyRate, @empPos, @empHire
+        @empGen, @empBirth, @empAge, @empEmerg, @empDailyRate, @empPos, @empHire, @pay, @workstat
     )";
 
             // wag to kalimutan, eto connection naten sa sql
@@ -100,6 +102,8 @@ namespace PayrollSys
                         cmd.Parameters.AddWithValue("@empDailyRate", dailyRate);
                         cmd.Parameters.AddWithValue("@empPos", txtposition.Text);
                         cmd.Parameters.AddWithValue("@empHire", DateTime.Now);
+                        cmd.Parameters.AddWithValue("@pay", txtpay.Text);
+                        cmd.Parameters.AddWithValue("@workstat", employstat.Text);
 
                         cmd.ExecuteNonQuery(); 
                     }
@@ -131,6 +135,8 @@ namespace PayrollSys
             txtemerg.Text = string.Empty;
             txtdrate.Text = string.Empty;
             txtposition.Text = string.Empty;
+            txtpay.Text = string.Empty;
+            employstat.Text = string.Empty;
 
             txtfname.Focus();
 
@@ -203,8 +209,10 @@ namespace PayrollSys
             AppendField(ref queryBuilder, parameters, "@empEmerg", txtemerg.Text, "empEmerg");
             AppendField(ref queryBuilder, parameters, "@empDailyRate", txtdrate.Text, "empDailyRate");
             AppendField(ref queryBuilder, parameters, "@empPos", txtposition.Text, "empPos");
+            AppendField(ref queryBuilder, parameters, "@pay", txtpay.Text, "pay");
+            AppendField(ref queryBuilder, parameters, "@workstat", employstat.Text, "workstat");
 
-            
+
             if (queryBuilder.ToString().EndsWith(", "))
             {
                 queryBuilder.Remove(queryBuilder.Length - 2, 2);  

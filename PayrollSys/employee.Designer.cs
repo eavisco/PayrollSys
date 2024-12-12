@@ -61,8 +61,8 @@
             this.label19 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.txtdrate = new System.Windows.Forms.TextBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.txtpay = new System.Windows.Forms.ComboBox();
+            this.employstat = new System.Windows.Forms.ComboBox();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.txtposition = new System.Windows.Forms.TextBox();
             this.btnempsave = new System.Windows.Forms.Button();
@@ -359,30 +359,30 @@
             this.txtdrate.Size = new System.Drawing.Size(147, 20);
             this.txtdrate.TabIndex = 32;
             // 
-            // comboBox2
+            // txtpay
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
+            this.txtpay.FormattingEnabled = true;
+            this.txtpay.Items.AddRange(new object[] {
             "Monthly",
             "Bi-Weekly",
             "Weekly",
             "Annual"});
-            this.comboBox2.Location = new System.Drawing.Point(122, 386);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(147, 21);
-            this.comboBox2.TabIndex = 33;
+            this.txtpay.Location = new System.Drawing.Point(122, 386);
+            this.txtpay.Name = "txtpay";
+            this.txtpay.Size = new System.Drawing.Size(147, 21);
+            this.txtpay.TabIndex = 33;
             // 
-            // comboBox3
+            // employstat
             // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Items.AddRange(new object[] {
+            this.employstat.FormattingEnabled = true;
+            this.employstat.Items.AddRange(new object[] {
             "Employed",
             "Unemployed",
             "Trainee"});
-            this.comboBox3.Location = new System.Drawing.Point(382, 386);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(147, 21);
-            this.comboBox3.TabIndex = 34;
+            this.employstat.Location = new System.Drawing.Point(382, 386);
+            this.employstat.Name = "employstat";
+            this.employstat.Size = new System.Drawing.Size(147, 21);
+            this.employstat.TabIndex = 34;
             // 
             // dateTimePicker2
             // 
@@ -449,8 +449,8 @@
             this.Controls.Add(this.btnempsave);
             this.Controls.Add(this.txtposition);
             this.Controls.Add(this.dateTimePicker2);
-            this.Controls.Add(this.comboBox3);
-            this.Controls.Add(this.comboBox2);
+            this.Controls.Add(this.employstat);
+            this.Controls.Add(this.txtpay);
             this.Controls.Add(this.txtdrate);
             this.Controls.Add(this.label20);
             this.Controls.Add(this.label19);
@@ -526,8 +526,8 @@
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.TextBox txtdrate;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.ComboBox txtpay;
+        private System.Windows.Forms.ComboBox employstat;
         private System.Windows.Forms.DateTimePicker dateTimePicker2;
         private System.Windows.Forms.TextBox txtposition;
         private System.Windows.Forms.Button btnempsave;
