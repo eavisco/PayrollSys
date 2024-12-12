@@ -41,7 +41,9 @@ CREATE TABLE `empattendance` (
 
 CREATE TABLE `empdata` (
   `empID` int(20) NOT NULL,
-  `empName` varchar(255) DEFAULT NULL,
+  `empFirstName` varchar(255) DEFAULT NULL,
+  `empLastName` varchar(255) DEFAULT NULL,
+  `empMiddleName` varchar(255) DEFAULT NULL,
   `empAdd` varchar(255) DEFAULT NULL,
   `empCon` int(20) DEFAULT NULL,
   `empStat` text DEFAULT NULL,
