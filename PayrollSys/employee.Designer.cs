@@ -208,6 +208,10 @@
             // txtstatus
             // 
             this.txtstatus.FormattingEnabled = true;
+            this.txtstatus.Items.AddRange(new object[] {
+            "Single",
+            "Married",
+            "Widowed"});
             this.txtstatus.Location = new System.Drawing.Point(649, 138);
             this.txtstatus.Name = "txtstatus";
             this.txtstatus.Size = new System.Drawing.Size(147, 21);
@@ -356,6 +360,11 @@
             // comboBox2
             // 
             this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Items.AddRange(new object[] {
+            "Monthly",
+            "Bi-Weekly",
+            "Weekly",
+            "Annual"});
             this.comboBox2.Location = new System.Drawing.Point(122, 386);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(147, 21);
@@ -364,6 +373,10 @@
             // comboBox3
             // 
             this.comboBox3.FormattingEnabled = true;
+            this.comboBox3.Items.AddRange(new object[] {
+            "Employed",
+            "Unemployed",
+            "Trainee"});
             this.comboBox3.Location = new System.Drawing.Point(382, 386);
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(147, 21);
