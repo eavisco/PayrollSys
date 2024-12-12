@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,61 +13,96 @@ namespace PayrollSys
 {
     public partial class attendance : Form
     {
-        
+        private readonly string connectionString = "server=127.0.0.1;user=root;database=payrollsysdb;password=";
+
         public attendance()
         {
             InitializeComponent();
             InitializeEmployeeIds();
             InitializeTimePickers();
-
         }
-     
+
         private void InitializeEmployeeIds()
         {
-            // TODO: database integration 
-            for (int i = 1; i <= 10; i++)
+            try
             {
-                empcode.Items.Add(i.ToString("D4"));
+                using (var connection = new MySqlConnection(connectionString))
+                {
+                    connection.Open();
+                    string query = "SELECT empID FROM empdata";
+
+                    using (var cmd = new MySqlCommand(query, connection))
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            empcode.Items.Add(reader["empID"].ToString());
+                        }
+                    }
+                }
+
+                empcode.SelectedIndex = 0; // Default selection
             }
-            empcode.SelectedIndex = 0;
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error loading employee IDs: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void InitializeTimePickers()
         {
-            
             timein.Value = DateTime.Now;
-            timeout.Value = DateTime.Now.AddHours(8); 
+            timeout.Value = DateTime.Now.AddHours(8);
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+            string employeeId = empcode.Text;
+            DateTime date = empdate.Value.Date;
+            TimeSpan timeIn = timein.Value.TimeOfDay;
+            TimeSpan timeOut = timeout.Value.TimeOfDay;
+
+            if (timeOut <= timeIn)
             {
-                string employeeId = empcode.Text;
-                DateTime date = empdate.Value.Date;
-                TimeSpan timeIn = timein.Value.TimeOfDay;
-                TimeSpan timeOut = timeout.Value.TimeOfDay;
-
-                
-                //if (timeOut <= timeIn)
-                {
-                    MessageBox.Show("Time Out must be after Time In.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-
-                // TODO: database integration
-
-                string message = $"Attendance recorded:\nEmployee ID: {employeeId}\nDate: {date.ToShortDateString()}\nTime In: {timeIn.ToString(@"hh\:mm")}\nTime Out: {timeOut.ToString(@"hh\:mm")}";
-                MessageBox.Show(message, "Attendance Recorded", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                
-                empcode.SelectedIndex = 0;
-                timein.Value = DateTime.Now;
-                timeout.Value = DateTime.Now.AddHours(8);
+                MessageBox.Show("Time Out must be after Time In.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
 
-            
+            try
+            {
+                using (var connection = new MySqlConnection(connectionString))
+                {
+                    connection.Open();
+                    string insertQuery = @"
+                        INSERT INTO empattendance (empID, timeIN, timeOUT)
+                        VALUES (@empID, @timeIN, @timeOUT)";
 
+                    using (var cmd = new MySqlCommand(insertQuery, connection))
+                    {
+                        cmd.Parameters.AddWithValue("@empID", employeeId);
+                        cmd.Parameters.AddWithValue("@timeIN", timeIn);
+                        cmd.Parameters.AddWithValue("@timeOUT", timeOut);
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+
+                string message = $"Attendance recorded:\nEmployee ID: {employeeId}\nDate: {date.ToShortDateString()}\nTime In: {timeIn:hh\\:mm}\nTime Out: {timeOut:hh\\:mm}";
+                MessageBox.Show(message, "Attendance Recorded", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                ResetForm();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error recording attendance: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void ResetForm()
+        {
+            empcode.SelectedIndex = 0;
+            timein.Value = DateTime.Now;
+            timeout.Value = DateTime.Now.AddHours(8);
         }
     }
-    }
+}
 

@@ -88,6 +88,7 @@
             // 
             // timein
             // 
+            this.timein.Format = System.Windows.Forms.DateTimePickerFormat.Time;
             this.timein.Location = new System.Drawing.Point(330, 50);
             this.timein.Name = "timein";
             this.timein.Size = new System.Drawing.Size(200, 20);
@@ -95,6 +96,7 @@
             // 
             // timeout
             // 
+            this.timeout.Format = System.Windows.Forms.DateTimePickerFormat.Time;
             this.timeout.Location = new System.Drawing.Point(536, 50);
             this.timeout.Name = "timeout";
             this.timeout.Size = new System.Drawing.Size(200, 20);

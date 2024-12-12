@@ -219,6 +219,8 @@
             // 
             // dateTimePicker1
             // 
+            this.dateTimePicker1.CustomFormat = "yyyy-MM-dd";
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePicker1.Location = new System.Drawing.Point(649, 192);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(147, 20);
@@ -384,6 +386,8 @@
             // 
             // dateTimePicker2
             // 
+            this.dateTimePicker2.CustomFormat = "yyyy-MM-dd";
+            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePicker2.Location = new System.Drawing.Point(649, 351);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(147, 20);
@@ -398,12 +402,13 @@
             // 
             // btnempsave
             // 
+            this.btnempsave.BackColor = System.Drawing.SystemColors.Control;
             this.btnempsave.Location = new System.Drawing.Point(316, 458);
             this.btnempsave.Name = "btnempsave";
             this.btnempsave.Size = new System.Drawing.Size(75, 23);
             this.btnempsave.TabIndex = 37;
             this.btnempsave.Text = "SAVE";
-            this.btnempsave.UseVisualStyleBackColor = true;
+            this.btnempsave.UseVisualStyleBackColor = false;
             this.btnempsave.Click += new System.EventHandler(this.btnempsave_Click);
             // 
             // button2
@@ -414,6 +419,7 @@
             this.button2.TabIndex = 38;
             this.button2.Text = "UPDATE";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // btnempnew
             // 
@@ -430,7 +436,7 @@
             this.txtcode.Location = new System.Drawing.Point(122, 38);
             this.txtcode.Name = "txtcode";
             this.txtcode.Size = new System.Drawing.Size(147, 20);
-            this.txtcode.TabIndex = 40;
+            this.txtcode.TabIndex = 43;
             // 
             // employee
             // 
