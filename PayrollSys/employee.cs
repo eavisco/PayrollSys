@@ -38,7 +38,7 @@ namespace PayrollSys
                 {
                     rdo = "Female";
                 }
-                sql = "INSERT INTO 'empdata' ('empID', 'empName', 'empCon', 'empStat', 'emp)" + "VALUES()";
+                sql = "INSERT INTO 'empdata'('empID', 'empName', 'empCon', 'empStat', 'empPlaceb', 'empGen', 'empBirth', 'empAge', 'empEmerg', 'empDailyRate','empPos', 'empHire')" + "VALUES()";
             }
         }
 
