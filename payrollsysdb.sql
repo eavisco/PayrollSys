@@ -94,7 +94,7 @@ CREATE TABLE `emppay` (
   `grossInc` double(65,30) DEFAULT NULL,
   `netInc` double(65,30) DEFAULT NULL,
   `deducPagibig` double(65,30) DEFAULT NULL,
-  `deducPhilleath` double(65,30) DEFAULT NULL,
+  `deducPhillhealth` double(65,30) DEFAULT NULL,
   `deducSSS` double(65,30) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
