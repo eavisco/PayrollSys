@@ -69,6 +69,8 @@
             this.label22 = new System.Windows.Forms.Label();
             this.textBox11 = new System.Windows.Forms.TextBox();
             this.textBox15 = new System.Windows.Forms.TextBox();
+            this.SaveToFile = new System.Windows.Forms.Button();
+            this.Save = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -410,11 +412,33 @@
             this.textBox15.Size = new System.Drawing.Size(100, 20);
             this.textBox15.TabIndex = 44;
             // 
+            // SaveToFile
+            // 
+            this.SaveToFile.Location = new System.Drawing.Point(387, 418);
+            this.SaveToFile.Name = "SaveToFile";
+            this.SaveToFile.Size = new System.Drawing.Size(75, 23);
+            this.SaveToFile.TabIndex = 45;
+            this.SaveToFile.Text = "Save To File";
+            this.SaveToFile.UseVisualStyleBackColor = true;
+            this.SaveToFile.Click += new System.EventHandler(this.SaveToFile_Click);
+            // 
+            // Save
+            // 
+            this.Save.Location = new System.Drawing.Point(468, 418);
+            this.Save.Name = "Save";
+            this.Save.Size = new System.Drawing.Size(75, 23);
+            this.Save.TabIndex = 46;
+            this.Save.Text = "SAVE to txt";
+            this.Save.UseVisualStyleBackColor = true;
+            this.Save.Click += new System.EventHandler(this.Save_Click);
+            // 
             // payroll
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(719, 450);
+            this.Controls.Add(this.Save);
+            this.Controls.Add(this.SaveToFile);
             this.Controls.Add(this.textBox15);
             this.Controls.Add(this.textBox11);
             this.Controls.Add(this.label22);
@@ -458,6 +482,7 @@
             this.Controls.Add(this.label1);
             this.Name = "payroll";
             this.Text = "payroll";
+            this.Load += new System.EventHandler(this.payroll_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -506,5 +531,7 @@
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.TextBox textBox11;
         private System.Windows.Forms.TextBox textBox15;
+        private System.Windows.Forms.Button SaveToFile;
+        private System.Windows.Forms.Button Save;
     }
 }
