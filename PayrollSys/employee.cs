@@ -104,6 +104,7 @@ namespace PayrollSys
                         cmd.Parameters.AddWithValue("@empHire", DateTime.Now);
                         cmd.Parameters.AddWithValue("@pay", txtpay.Text);
                         cmd.Parameters.AddWithValue("@workstat", employstat.Text);
+                        cmd.Parameters.AddWithValue("@empAdd", txtaddress.Text);
 
                         cmd.ExecuteNonQuery(); 
                     }

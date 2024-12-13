@@ -64,6 +64,11 @@
             this.textBox13 = new System.Windows.Forms.TextBox();
             this.textBox14 = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
+            this.btnselect = new System.Windows.Forms.Button();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.textBox11 = new System.Windows.Forms.TextBox();
+            this.textBox15 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -360,15 +365,61 @@
             this.label20.AutoSize = true;
             this.label20.Location = new System.Drawing.Point(102, 92);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(41, 13);
+            this.label20.Size = new System.Drawing.Size(17, 13);
             this.label20.TabIndex = 39;
-            this.label20.Text = "label20";
+            this.label20.Text = "\"\"";
+            // 
+            // btnselect
+            // 
+            this.btnselect.Location = new System.Drawing.Point(228, 57);
+            this.btnselect.Name = "btnselect";
+            this.btnselect.Size = new System.Drawing.Size(75, 23);
+            this.btnselect.TabIndex = 40;
+            this.btnselect.Text = "SELECT";
+            this.btnselect.UseVisualStyleBackColor = true;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(573, 309);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(28, 13);
+            this.label21.TabIndex = 41;
+            this.label21.Text = "Late";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(561, 334);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(40, 13);
+            this.label22.TabIndex = 42;
+            this.label22.Text = "Absent";
+            // 
+            // textBox11
+            // 
+            this.textBox11.Location = new System.Drawing.Point(607, 305);
+            this.textBox11.Name = "textBox11";
+            this.textBox11.Size = new System.Drawing.Size(100, 20);
+            this.textBox11.TabIndex = 43;
+            // 
+            // textBox15
+            // 
+            this.textBox15.Location = new System.Drawing.Point(607, 331);
+            this.textBox15.Name = "textBox15";
+            this.textBox15.Size = new System.Drawing.Size(100, 20);
+            this.textBox15.TabIndex = 44;
             // 
             // payroll
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(719, 450);
+            this.Controls.Add(this.textBox15);
+            this.Controls.Add(this.textBox11);
+            this.Controls.Add(this.label22);
+            this.Controls.Add(this.label21);
+            this.Controls.Add(this.btnselect);
             this.Controls.Add(this.label20);
             this.Controls.Add(this.textBox14);
             this.Controls.Add(this.textBox13);
@@ -450,5 +501,10 @@
         private System.Windows.Forms.TextBox textBox13;
         private System.Windows.Forms.TextBox textBox14;
         private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Button btnselect;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.TextBox textBox11;
+        private System.Windows.Forms.TextBox textBox15;
     }
 }

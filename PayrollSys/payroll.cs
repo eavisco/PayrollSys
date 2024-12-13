@@ -15,13 +15,18 @@ namespace PayrollSys
     public partial class payroll : Form
     {
         string connectionString = "server = 127.0.0.1; user=root; database=payrollsysdb; password=";
+        
 
 
         public payroll()
         {
             InitializeComponent();
             InitializeEmployeeIds();
+
+            domainUpDown1.SelectedItemChanged += DomainUpDown1_SelectedItemChanged;
         }
+
+
         private void InitializeEmployeeIds()
         {
             try
@@ -41,8 +46,8 @@ namespace PayrollSys
                     }
                 }
 
-                domainUpDown1.SelectedIndex = 0; // Default selection
-                UpdateEmployeeName();
+                domainUpDown1.SelectedIndex = 0; 
+                UpdateEmployeeDetails(); 
             }
             catch (Exception ex)
             {
@@ -50,26 +55,32 @@ namespace PayrollSys
             }
         }
 
-        private void domainUpDown1_SelectedItemChanged(object sender, EventArgs e)
+        private void DomainUpDown1_SelectedItemChanged(object sender, EventArgs e)
         {
-            UpdateEmployeeName();
+            UpdateEmployeeDetails();
         }
 
-        private void UpdateEmployeeName()
+        private void UpdateEmployeeDetails()
         {
             try
             {
-                string employeeId = domainUpDown1.SelectedItem?.ToString() ?? ""; // Ensure correct assignment
+                string employeeId = domainUpDown1.SelectedItem?.ToString() ?? ""; 
                 if (string.IsNullOrEmpty(employeeId)) return;
+
+                
+                label20.Text = ""; 
+                textBox1.Text = ""; 
+                textBox2.Text = ""; 
 
                 using (var connection = new MySqlConnection(connectionString))
                 {
                     connection.Open();
-                    string query = "SELECT empLastName, empFirstName, empMiddleName FROM empdata WHERE empID = @empID";
+                    string query = "SELECT empLastName, empFirstName, empMiddleName, pay, empDailyRate FROM empdata WHERE empID = @empID";
 
                     using (var cmd = new MySqlCommand(query, connection))
                     {
                         cmd.Parameters.AddWithValue("@empID", employeeId);
+
                         using (var reader = cmd.ExecuteReader())
                         {
                             if (reader.Read())
@@ -77,11 +88,23 @@ namespace PayrollSys
                                 string lastName = reader["empLastName"].ToString();
                                 string firstName = reader["empFirstName"].ToString();
                                 string middleName = reader["empMiddleName"].ToString();
-                                label20.Text = $"{lastName}, {firstName} {middleName}"; // Use label instead of TextBox
+                                string pay = reader["pay"].ToString();
+                                string empDailyRate = reader["empDailyRate"].ToString();
+
+                                
+                                label20.Text = $"{lastName}, {firstName} {middleName}";
+
+                                
+                                textBox1.Text = pay;
+
+                                
+                                textBox2.Text = empDailyRate;
                             }
                             else
                             {
-                                label20.Text = "";
+                                label20.Text = "No data found"; 
+                                textBox1.Text = "0.00"; 
+                                textBox2.Text = "0.00"; 
                             }
                         }
                     }
@@ -89,24 +112,32 @@ namespace PayrollSys
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error updating employee name: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error updating employee details: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-    
 
-private void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
+            string connectionString = "server = 127.0.0.1; user=root; database=payrollsysdb; password=";
             try
             {
-                string employeeId = domainUpDown1.Text;
-                string query = @"INSERT INTO emppay (pay, workDay, payRate, rateWage, overtimeHour, overtimeRegular, holidayDaily, holidayPay, grossInc, netInc, deducPagibig, deducPhillhealth, deducSSS) 
-                                 VALUES (@pay, @workDay, @payRate, @rateWage, @overtimeHour, @overtimeRegular, @holidayDaily, @holidayPay, @grossInc, @netInc, @deducPagibig, @deducPhillhealth, @deducSSS)";
+                string employeeId = domainUpDown1.Text;  
+                string query = @"
+            INSERT INTO emppay (
+                empID, pay, workDay, payRate, rateWage, overtimeHour, overtimeRegular, holidayDaily, 
+                holidayPay, grossInc, netInc, deducPagibig, deducPhillhealth, deducSSS, @deducLate, @deducAbsent) 
+            VALUES (
+                @empID, @pay, @workDay, @payRate, @rateWage, @overtimeHour, @overtimeRegular, @holidayDaily, 
+                @holidayPay, @grossInc, @netInc, @deducPagibig, @deducPhillhealth, @deducSSS, @deducLate, @deducAbsent)";
 
                 using (var connection = new MySqlConnection(connectionString))
                 {
                     connection.Open();
                     using (var cmd = new MySqlCommand(query, connection))
                     {
+                       
+                        cmd.Parameters.AddWithValue("@empID", employeeId);  // para lang makita un empid kulit neto eh
+                        
                         cmd.Parameters.AddWithValue("@pay", textBox1.Text);
                         cmd.Parameters.AddWithValue("@workDay", textBox3.Text);
                         cmd.Parameters.AddWithValue("@payRate", textBox2.Text);
@@ -120,13 +151,14 @@ private void button1_Click(object sender, EventArgs e)
                         cmd.Parameters.AddWithValue("@deducPagibig", textBox12.Text);
                         cmd.Parameters.AddWithValue("@deducPhillhealth", textBox13.Text);
                         cmd.Parameters.AddWithValue("@deducSSS", textBox14.Text);
-
+                        cmd.Parameters.AddWithValue("@deducLate", textBox11.Text);
+                        cmd.Parameters.AddWithValue("@deducAbsent", textBox15.Text);
                         cmd.ExecuteNonQuery();
                     }
                 }
 
                 MessageBox.Show($"Payment data saved successfully for Employee ID: {employeeId}", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                
+
             }
             catch (Exception ex)
             {
@@ -150,6 +182,8 @@ private void button1_Click(object sender, EventArgs e)
             textBox12.Clear();
             textBox13.Clear();
             textBox14.Clear();
+            textBox11.Clear();
+            textBox15.Clear();
         }
     }
 }
