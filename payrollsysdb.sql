@@ -83,8 +83,8 @@ INSERT INTO `emplog` (`empName`, `empPass`) VALUES
 
 CREATE TABLE `emppay` (
   `empID` int(20) NOT NULL,
-  `pay` int(11) NOT NULL,
-  `workDay` int(11) NOT NULL,
+  `pay` varchar(255) NOT NULL,
+  `workDay` int(31) NOT NULL,
   `payRate` int(11) NOT NULL,
   `rateWage` varchar(255) NOT NULL,
   `overtimeHour` double(65,30) DEFAULT NULL,
@@ -95,7 +95,9 @@ CREATE TABLE `emppay` (
   `netInc` double(65,30) DEFAULT NULL,
   `deducPagibig` double(65,30) DEFAULT NULL,
   `deducPhillhealth` double(65,30) DEFAULT NULL,
-  `deducSSS` double(65,30) DEFAULT NULL
+  `deducSSS` double(65,30) DEFAULT NULL,
+  `deducLate` int(11) DEFAULT NULL,
+  `deducAbsent` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
