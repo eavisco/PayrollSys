@@ -39,7 +39,7 @@
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(75, 23);
             this.btnPrint.TabIndex = 1;
-            this.btnPrint.Text = "button1";
+            this.btnPrint.Text = "Print";
             this.btnPrint.UseVisualStyleBackColor = true;
             this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
@@ -49,7 +49,7 @@
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 2;
-            this.btnSave.Text = "button2";
+            this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
@@ -57,7 +57,7 @@
             // 
             this.richTextBoxReport.Location = new System.Drawing.Point(93, 12);
             this.richTextBoxReport.Name = "richTextBoxReport";
-            this.richTextBoxReport.Size = new System.Drawing.Size(454, 426);
+            this.richTextBoxReport.Size = new System.Drawing.Size(93, 52);
             this.richTextBoxReport.TabIndex = 3;
             this.richTextBoxReport.Text = "";
             this.richTextBoxReport.TextChanged += new System.EventHandler(this.richTextBoxReport_TextChanged_1);
@@ -66,7 +66,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(559, 450);
+            this.ClientSize = new System.Drawing.Size(213, 99);
             this.Controls.Add(this.richTextBoxReport);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnPrint);

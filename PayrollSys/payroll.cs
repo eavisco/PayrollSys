@@ -17,8 +17,9 @@ namespace PayrollSys
     {
         string connectionString = "server = 127.0.0.1; user=root; database=payrollsysdb; password="; //importante to sa lahat para maconnect sa sql
 
-        private static double YearToDateGross = 0;
-        private static double YearToDateNet = 0;
+        
+        private double YearToDateGross;
+        private double YearToDateNet;
 
         public payroll()
         {
@@ -324,11 +325,11 @@ namespace PayrollSys
 
         private void btnCalculate_Click(object sender, EventArgs e)
         {
-            this.btnCalculate.Click += new System.EventHandler(this.btnCalculate_Click);
+            // Remove the redundant event subscription
+            // this.btnCalculate.Click += new System.EventHandler(this.btnCalculate_Click);
 
             try
             {
-
                 double ratePerDay = Convert.ToDouble(textBox2.Text);
                 double workingDays = Convert.ToDouble(textBox3.Text);
                 double hourlyOT = Convert.ToDouble(textBox5.Text);
@@ -351,12 +352,8 @@ namespace PayrollSys
                 double netPay = totalPayment - totalDeductions;
 
                 // Step 5: Calculate Year to Date (YTD) values
-                // Assuming YearToDateGross and YearToDateNet are static fields or variables that hold YTD values
-
-
                 YearToDateGross += grossIncome;
                 YearToDateNet += netPay;
-
 
                 // Step 6: Prepare the report data
                 string dataToReport = "";
@@ -383,15 +380,15 @@ namespace PayrollSys
                 // Step 7: Set the data to the RichTextBox in the Report Form
                 ReportForm reportForm = new ReportForm(dataToReport);
                 reportForm.Show();
-
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error: " + ex.Message);  // Handle any errors
+                MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
     }
-    }
+}
     
 
     internal class ReportsForm : PayrollSys.reports

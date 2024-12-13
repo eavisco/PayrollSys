@@ -31,7 +31,7 @@ namespace PayrollSys
 
         private void UpdateButtonStates()
         {
-            // Enable/disable buttons based on whether the user is an admin or employee
+            // Enable/disable buttons eto un isAdmin flag haup na yan
             if (isAdmin)
             {
                 
