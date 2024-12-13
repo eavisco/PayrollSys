@@ -71,6 +71,7 @@
             this.textBox15 = new System.Windows.Forms.TextBox();
             this.SaveToFile = new System.Windows.Forms.Button();
             this.Save = new System.Windows.Forms.Button();
+            this.btnCalculate = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -432,11 +433,22 @@
             this.Save.UseVisualStyleBackColor = true;
             this.Save.Click += new System.EventHandler(this.Save_Click);
             // 
+            // btnCalculate
+            // 
+            this.btnCalculate.Location = new System.Drawing.Point(297, 418);
+            this.btnCalculate.Name = "btnCalculate";
+            this.btnCalculate.Size = new System.Drawing.Size(75, 23);
+            this.btnCalculate.TabIndex = 47;
+            this.btnCalculate.Text = "Calculate";
+            this.btnCalculate.UseVisualStyleBackColor = true;
+            this.btnCalculate.Click += new System.EventHandler(this.btnCalculate_Click);
+            // 
             // payroll
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(719, 450);
+            this.Controls.Add(this.btnCalculate);
             this.Controls.Add(this.Save);
             this.Controls.Add(this.SaveToFile);
             this.Controls.Add(this.textBox15);
@@ -533,5 +545,6 @@
         private System.Windows.Forms.TextBox textBox15;
         private System.Windows.Forms.Button SaveToFile;
         private System.Windows.Forms.Button Save;
+        private System.Windows.Forms.Button btnCalculate;
     }
 }

@@ -8,11 +8,21 @@ namespace PayrollSys
 {
     internal class ReportForm
     {
+      
+
+
         private string dataToReport;
 
         public ReportForm(string dataToReport)
         {
             this.dataToReport = dataToReport;
+           
+        }
+
+        internal void Show()
+        {
+            throw new NotImplementedException();
         }
     }
 }
+

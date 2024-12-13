@@ -17,12 +17,15 @@ namespace PayrollSys
     {
         string connectionString = "server = 127.0.0.1; user=root; database=payrollsysdb; password="; //importante to sa lahat para maconnect sa sql
 
-
+        private static double YearToDateGross = 0;
+        private static double YearToDateNet = 0;
 
         public payroll()
         {
             InitializeComponent();
             InitializeEmployeeIds();
+
+
 
 
 
@@ -222,6 +225,8 @@ namespace PayrollSys
                 string late = textBox11.Text;
                 string absent = textBox15.Text;
 
+
+
                 // Create the report content
                 string reportContent = $"Employee Code: {employeeCode}\n" +
                                        $"Employee Name: {employeeName}\n" +
@@ -286,6 +291,9 @@ namespace PayrollSys
             dataToSave += "Net Income: " + textBox10.Text + Environment.NewLine;
             dataToSave += "------------------------------------------------------------" + Environment.NewLine;
 
+
+           
+
             try
             {
                 // Using StreamWriter to write to the file
@@ -312,6 +320,75 @@ namespace PayrollSys
         internal static void show()
         {
             throw new NotImplementedException();
+        }
+
+        private void btnCalculate_Click(object sender, EventArgs e)
+        {
+            this.btnCalculate.Click += new System.EventHandler(this.btnCalculate_Click);
+
+            try
+            {
+
+                double ratePerDay = Convert.ToDouble(textBox2.Text);
+                double workingDays = Convert.ToDouble(textBox3.Text);
+                double hourlyOT = Convert.ToDouble(textBox5.Text);
+                double regularOT = Convert.ToDouble(textBox7.Text);
+                double holidayPay = Convert.ToDouble(textBox8.Text);
+                double sss = Convert.ToDouble(textBox14.Text);
+                double pagibig = Convert.ToDouble(textBox12.Text);
+                double philHealth = Convert.ToDouble(textBox13.Text);
+                double lateDeductions = Convert.ToDouble(textBox11.Text);
+                double absentDeductions = Convert.ToDouble(textBox15.Text);
+
+                // Step 2: Calculate Total Payment (Gross Income + Overtime Pay + Holiday Pay)
+                double grossIncome = ratePerDay * workingDays;
+                double totalPayment = grossIncome + hourlyOT + regularOT + holidayPay;
+
+                // Step 3: Calculate Total Deductions (SSS + Pagibig + PhilHealth + Late + Absent)
+                double totalDeductions = sss + pagibig + philHealth + lateDeductions + absentDeductions;
+
+                // Step 4: Calculate Net Pay (Total Payment - Total Deductions)
+                double netPay = totalPayment - totalDeductions;
+
+                // Step 5: Calculate Year to Date (YTD) values
+                // Assuming YearToDateGross and YearToDateNet are static fields or variables that hold YTD values
+
+
+                YearToDateGross += grossIncome;
+                YearToDateNet += netPay;
+
+
+                // Step 6: Prepare the report data
+                string dataToReport = "";
+                dataToReport += "Employee Code: " + domainUpDown1.Text + Environment.NewLine;
+                dataToReport += "Employee Name: " + label20.Text + Environment.NewLine;
+                dataToReport += "Payment Method: " + textBox1.Text + Environment.NewLine;
+                dataToReport += "Rate Per Day: " + ratePerDay + Environment.NewLine;
+                dataToReport += "Working Days: " + workingDays + Environment.NewLine;
+                dataToReport += "Hourly OT: " + hourlyOT + Environment.NewLine;
+                dataToReport += "Regular OT: " + regularOT + Environment.NewLine;
+                dataToReport += "Holiday Pay: " + holidayPay + Environment.NewLine;
+                dataToReport += "SSS: " + sss + Environment.NewLine;
+                dataToReport += "Pagibig: " + pagibig + Environment.NewLine;
+                dataToReport += "PhilHealth: " + philHealth + Environment.NewLine;
+                dataToReport += "Late: " + lateDeductions + Environment.NewLine;
+                dataToReport += "Absent: " + absentDeductions + Environment.NewLine;
+                dataToReport += "Gross Income: " + grossIncome.ToString("F2") + Environment.NewLine;
+                dataToReport += "Total Payment: " + totalPayment.ToString("F2") + Environment.NewLine;
+                dataToReport += "Total Deductions: " + totalDeductions.ToString("F2") + Environment.NewLine;
+                dataToReport += "Net Pay: " + netPay.ToString("F2") + Environment.NewLine;
+                dataToReport += "Year To Date Gross Income: " + YearToDateGross.ToString("F2") + Environment.NewLine;
+                dataToReport += "Year To Date Net Income: " + YearToDateNet.ToString("F2") + Environment.NewLine;
+
+                // Step 7: Set the data to the RichTextBox in the Report Form
+                ReportForm reportForm = new ReportForm(dataToReport);
+                reportForm.Show();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);  // Handle any errors
+            }
         }
     }
     }
