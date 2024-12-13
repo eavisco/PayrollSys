@@ -118,14 +118,13 @@ namespace PayrollSys
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string connectionString = "server = 127.0.0.1; user=root; database=payrollsysdb; password=";
             try
             {
-                string employeeId = domainUpDown1.Text;  
+                string employeeId = domainUpDown1.Text;
                 string query = @"
             INSERT INTO emppay (
                 empID, pay, workDay, payRate, rateWage, overtimeHour, overtimeRegular, holidayDaily, 
-                holidayPay, grossInc, netInc, deducPagibig, deducPhillhealth, deducSSS, @deducLate, @deducAbsent) 
+                holidayPay, grossInc, netInc, deducPagibig, deducPhillhealth, deducSSS, deducLate, deducAbsent) 
             VALUES (
                 @empID, @pay, @workDay, @payRate, @rateWage, @overtimeHour, @overtimeRegular, @holidayDaily, 
                 @holidayPay, @grossInc, @netInc, @deducPagibig, @deducPhillhealth, @deducSSS, @deducLate, @deducAbsent)";
@@ -135,9 +134,7 @@ namespace PayrollSys
                     connection.Open();
                     using (var cmd = new MySqlCommand(query, connection))
                     {
-                       
-                        cmd.Parameters.AddWithValue("@empID", employeeId);  // para lang makita un empid kulit neto eh
-                        
+                        cmd.Parameters.AddWithValue("@empID", employeeId);
                         cmd.Parameters.AddWithValue("@pay", textBox1.Text);
                         cmd.Parameters.AddWithValue("@workDay", textBox3.Text);
                         cmd.Parameters.AddWithValue("@payRate", textBox2.Text);
@@ -153,12 +150,12 @@ namespace PayrollSys
                         cmd.Parameters.AddWithValue("@deducSSS", textBox14.Text);
                         cmd.Parameters.AddWithValue("@deducLate", textBox11.Text);
                         cmd.Parameters.AddWithValue("@deducAbsent", textBox15.Text);
+
                         cmd.ExecuteNonQuery();
                     }
                 }
 
                 MessageBox.Show($"Payment data saved successfully for Employee ID: {employeeId}", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
             }
             catch (Exception ex)
             {
