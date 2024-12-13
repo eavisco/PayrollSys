@@ -22,7 +22,7 @@ namespace PayrollSys
             InitializeComponent();
         }
 
-
+        //just in case madelete to anywhere sa code spare naten
         //MySqlConnection mySqlConnection = new MySqlConnection("server = 127.0.0.1; user=root; database=payrollsysdb; password=");
 
         string query;
@@ -61,8 +61,8 @@ namespace PayrollSys
         @empGen, @empBirth, @empAge, @empEmerg, @empDailyRate, @empPos, @empHire, @pay, @workstat
     )";
 
-            // wag to kalimutan, eto connection naten sa sql
-            string connectionString = "server = 127.0.0.1; user=root; database=payrollsysdb; password=";
+            
+            string connectionString = "server = 127.0.0.1; user=root; database=payrollsysdb; password="; //importante to sa lahat para maconnect sa sql
 
             try
             {
@@ -154,7 +154,7 @@ namespace PayrollSys
 
         private void button2_Click(object sender, EventArgs e)
         {
-            string connectionString = "server = 127.0.0.1; user=root; database=payrollsysdb; password=";
+            string connectionString = "server = 127.0.0.1; user=root; database=payrollsysdb; password="; //importante to sa lahat para maconnect sa sql
 
             try
             {

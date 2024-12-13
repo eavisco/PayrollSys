@@ -34,27 +34,29 @@ namespace PayrollSys
             // Enable/disable buttons based on whether the user is an admin or employee
             if (isAdmin)
             {
-                // Admin: Enable payroll and attendance buttons, leave emp button enabled
-                btnpayroll.Enabled = true;  // Enable payroll for admin
-                btnattendance.Enabled = true;  // Enable attendance for admin
-                btnemp.Enabled = true;  // Enable employee button for admin (admin can manage employees)
-
-                // Optionally reset button colors (no grey out for admin)
+                
+                btnpayroll.Enabled = true;  
+                btnattendance.Enabled = true;  
+                btnemp.Enabled = true;  
+                btnreport.Enabled = false;
+               
                 btnpayroll.BackColor = SystemColors.Control;
                 btnattendance.BackColor = SystemColors.Control;
                 btnemp.BackColor = SystemColors.Control;
+                btnreport.BackColor = Color.Gray;
             }
             else
             {
-                // Employee: Disable employee button and enable the rest
-                btnpayroll.Enabled = true;  // Enable payroll for employee
-                btnattendance.Enabled = true;  // Enable attendance for employee
-                btnemp.Enabled = false;  // Disable employee button for employee (employees can't manage other employees)
-
-                // Optionally grey out the employee button for employees
+                
+                btnpayroll.Enabled = true;  
+                btnattendance.Enabled = true; 
+                btnemp.Enabled = false;  
+                btnreport.Enabled = true;
+                
                 btnpayroll.BackColor = SystemColors.Control;
                 btnattendance.BackColor = SystemColors.Control;
-                btnemp.BackColor = Color.Gray;  // Grey out employee button for employees
+                btnemp.BackColor = Color.Gray;
+                btnreport.BackColor = SystemColors.Control;
             }
         }
 
@@ -72,7 +74,7 @@ namespace PayrollSys
 
         private void btnemp_Click(object sender, EventArgs e)
         {
-            // Open the employee form only if the button is enabled
+            
             if (btnemp.Enabled)
             {
                 employee employeeForm = new employee();
@@ -82,12 +84,18 @@ namespace PayrollSys
 
         private void btnclose_Click(object sender, EventArgs e)
         {
-            // Hide the current dashboard form
+           
             this.Hide();
 
-            // Create a new instance of the login form (Form1) and show it
+            
             Form1 loginForm = new Form1();
             loginForm.Show();
+        }
+
+        private void btnreport_Click(object sender, EventArgs e)
+        {
+            reports reportsForm = new reports();
+            reportsForm.Show();
         }
     }
 

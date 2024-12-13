@@ -14,8 +14,8 @@ namespace PayrollSys
 {
     public partial class payroll : Form
     {
-        string connectionString = "server = 127.0.0.1; user=root; database=payrollsysdb; password=";
-        
+        string connectionString = "server = 127.0.0.1; user=root; database=payrollsysdb; password="; //importante to sa lahat para maconnect sa sql
+
 
 
         public payroll()

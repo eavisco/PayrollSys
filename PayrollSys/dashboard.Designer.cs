@@ -32,6 +32,7 @@
             this.btnpayroll = new System.Windows.Forms.Button();
             this.btnattendance = new System.Windows.Forms.Button();
             this.btnclose = new System.Windows.Forms.Button();
+            this.btnreport = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnemp
@@ -74,11 +75,22 @@
             this.btnclose.UseVisualStyleBackColor = true;
             this.btnclose.Click += new System.EventHandler(this.btnclose_Click);
             // 
+            // btnreport
+            // 
+            this.btnreport.Location = new System.Drawing.Point(322, 160);
+            this.btnreport.Name = "btnreport";
+            this.btnreport.Size = new System.Drawing.Size(128, 23);
+            this.btnreport.TabIndex = 4;
+            this.btnreport.Text = "GET PAYSLIP";
+            this.btnreport.UseVisualStyleBackColor = true;
+            this.btnreport.Click += new System.EventHandler(this.btnreport_Click);
+            // 
             // dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(462, 195);
+            this.Controls.Add(this.btnreport);
             this.Controls.Add(this.btnclose);
             this.Controls.Add(this.btnattendance);
             this.Controls.Add(this.btnpayroll);
@@ -95,5 +107,6 @@
         private System.Windows.Forms.Button btnpayroll;
         private System.Windows.Forms.Button btnattendance;
         private System.Windows.Forms.Button btnclose;
+        private System.Windows.Forms.Button btnreport;
     }
 }
